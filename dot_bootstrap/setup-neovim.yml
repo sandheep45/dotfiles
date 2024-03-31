@@ -1,0 +1,46 @@
+---
+- name: Neovim setup
+  gather_facts: false
+  hosts: ubuntuNode1
+  vars:
+    stable_version: "stable"
+    nightly_version: "nightly"
+  tasks:
+    - name: check if .local/nvim exists
+      stat:
+        path: '/home/ubuntu/.local/nvim'
+      register: nvim_dir_output
+
+    - name: download and unarchive neovim
+      ansible.builtin.unarchive:
+        src: "https://github.com/neovim/neovim/releases/download/{{stable_version}}/nvim-linux64.tar.gz"
+        dest: "/home/ubuntu"
+        remote_src: true
+      register: nvim_download_output
+      when: not nvim_dir_output.stat.exists
+
+    - name: create .local/nvim directory
+      file:
+        path: '/home/ubuntu/.local/nvim'
+        state: directory
+      register: create_nvim_dir
+      when: not nvim_dir_output.stat.exists
+
+    - name: copy nvim-linux64 to .local/nvim
+      ansible.builtin.copy:
+        src: "/home/ubuntu/nvim-linux64/"
+        dest: "/home/ubuntu/.local/nvim/"
+        remote_src: true
+      when: not nvim_download_output.failed
+      ignore_errors: true
+
+
+    - name: Remove nvim-linux64 from /home/ubuntu
+      ansible.builtin.file:
+        state: absent
+        path: '/home/ubuntu/nvim-linux64'
+
+    - name: Add nvim to path
+      ansible.builtin.lineinfile:
+        path: '/home/ubuntu/.bashrc'
+        line: 'export PATH="$HOME/.local/nvim/bin:$PATH"'

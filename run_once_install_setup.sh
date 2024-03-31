@@ -16,16 +16,16 @@ install_on_ubuntu() {
     cd .dotfiles && stow . && cd ..
     exec "$SHELL"
 
-    python_latest_version_tag=$(pyenv install --list | grep --extended-regexp "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
-    pyenv --version
+    # python_latest_version_tag=$(pyenv install --list | grep --extended-regexp "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
+    # pyenv --version
 
-    pyenv install ${python_latest_version_tag}
+    # pyenv install ${python_latest_version_tag}
 
-    nvm install --lts
+    # nvm install --lts
 
-    brew install act
-    brew install thefuck
-    curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+    # brew install act
+    # brew install thefuck
+    # curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 }
 
 install_on_mac() {

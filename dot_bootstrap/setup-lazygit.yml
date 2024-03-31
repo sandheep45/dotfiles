@@ -1,0 +1,32 @@
+---
+- name: Lazygit setup
+  gather_facts: false
+  hosts: ubuntuNode1
+  tasks:
+    - name: Get latest Lazygit version
+      uri:
+        url: "https://api.github.com/repos/jesseduffield/lazygit/releases/latest"
+        return_content: yes
+      register: lazygit_release
+
+    - set_fact:
+        lazygit_version: "{{ lazygit_release.json.tag_name | regex_replace('^v', '') }}"
+
+    - name: Download Lazygit binary
+      get_url:
+        url: "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz"
+        dest: "/tmp/lazygit_{{ lazygit_version }}.tar.gz"
+
+    - name: Extract Lazygit binary
+      ansible.builtin.unarchive:
+        src: "/tmp/lazygit_{{ lazygit_version }}.tar.gz"
+        dest: "/tmp"
+        remote_src: yes
+
+    - name: Move Lazygit binary to /usr/local/bin
+      ansible.builtin.command:
+        cmd: "sudo mv /tmp/lazygit /usr/local/bin/lazygit"
+        creates: "/usr/local/bin/lazygit"
+      become: true
+
+

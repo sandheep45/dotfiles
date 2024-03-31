@@ -1,0 +1,25 @@
+---
+- name: Install zoxide
+  hosts: ubuntuNode1
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Install zoxide
+      ansible.builtin.shell:
+        cmd: "curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash"
+      become: true
+
+- name: Install thefuck
+  hosts: ubuntuNode1
+  gather_facts: false
+  become: true
+  tasks:
+    - name: set fact for user
+      ansible.builtin.set_fact:
+        default_user: /home/ubuntu
+        # default_user: /home/sandheepkumar
+
+    - name: Install thefuck
+      ansible.builtin.shell:
+        cmd: "{{ default_user }}/.pyenv/shims/pip install thefuck"
+      become: true

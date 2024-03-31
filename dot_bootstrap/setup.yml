@@ -1,0 +1,9 @@
+---
+- import_playbook: "./setup-git.yml"
+- import_playbook: "./setup-nvm.yml"
+- import_playbook: "./setup-zsh.yml"
+- import_playbook: "./setup-rust.yml"
+- import_playbook: "./setup-pyenv.yml"
+- import_playbook: "./setup-utils.yml"
+- import_playbook: "./setup-neovim.yml"
+- import_playbook: "./setup-lazygit.yml"

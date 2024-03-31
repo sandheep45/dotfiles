@@ -1,0 +1,16 @@
+---
+- name: Setup git to the latest version
+  hosts: ubuntuNode1
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Add git ppa repository
+      ansible.builtin.apt_repository:
+        repo: ppa:git-core/ppa
+      become: true
+
+    - name: Install git
+      ansible.builtin.apt:
+        update_cache: true
+        name: git
+      become: true

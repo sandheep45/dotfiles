@@ -9,18 +9,17 @@ install_on_ubuntu() {
   sudo apt-get install -y stow zsh build-essential jq
   sudo apt install pkg-config libssl-dev -y
 
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" -y
-  (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/ubuntu/.bashrc
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" -y
+  # (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/ubuntu/.bashrc
+  # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-  nvm_latest_version_tag=$(curl "https://api.github.com/repos/nvm-sh/nvm/releases/latest" | jq -r '.tag_name')
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${nvm_latest_version_tag}/install.sh | bash
+  # nvm_latest_version_tag=$(curl "https://api.github.com/repos/nvm-sh/nvm/releases/latest" | jq -r '.tag_name')
+  # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${nvm_latest_version_tag}/install.sh | bash
 
-  source ~/.bashrc
-  brew install nushell
-  # brew install chezmoi
-  brew install pyenv
-  source ~/.bashrc
+  # brew install nushell
+  # # brew install chezmoi
+  # brew install pyenv
+  echo "Installing on Ubuntu"
 }
 
 install_on_mac() {

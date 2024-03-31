@@ -1,0 +1,6 @@
+[ubuntuNode1]
+localhost
+# node1 ansible_user=ubuntu ansible_host=13.127.129.102 ansible_port=22 ansible_ssh_common_args='-o IdentityFile=~/Downloads/Ever.pem -o IdentitiesOnly=yes'
+# node1 ansible_user=ubuntu ansible_host=localhost ansible_port=2222 ansible_password=BuDTuT@143 ansible_ssh_common_args='-o PubkeyAuthentication=no -o StrictHostKeyChecking=no' ansible_become_pass=BuDTuT@143
+# node2 ansible_user=ubuntu ansible_host=localhost ansible_port=2223 ansible_password=BuDTuT@143 ansible_ssh_common_args='-o PubkeyAuthentication=no -o StrictHostKeyChecking=no' ansible_become_pass=BuDTuT@143
+
