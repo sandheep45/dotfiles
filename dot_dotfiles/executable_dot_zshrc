@@ -11,8 +11,13 @@ fi
 #   exec tmux -u
 # fi
 
-eval "$(zoxide init zsh)"
-eval $(thefuck --alias FUCK)
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
+if command -v thefuck &> /dev/null; then
+  eval $(thefuck --alias FUCK)
+fi
 
 export NEOVIM_PROFILE_PATH="neovim"
 alias nvim-jdhao="NVIM_APPNAME=$NEOVIM_PROFILE_PATH/jdhao/ nvim"
@@ -165,19 +170,16 @@ export PATH="$ANDROID_HOME/platform-tools/:$PATH"
 export PATH="$ANDROID_HOME/emulator/:$PATH"
 
 # pnpm
-export PNPM_HOME="/home/sandheep/.local/share/pnpm"
+export PNPM_HOME="/home/sandheepkumar/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-source $(dirname $(gem which colorls))/tab_complete.sh
-# alias stow='sudo STOW_DIR=/usr/local/stow /usr/bin/stow'
+if command -v colorls &> /dev/null; then
+  source $(dirname $(gem which colorls))/tab_complete.sh
+fi
 
 PATH=~/.console-ninja/.bin:$PATH
 
