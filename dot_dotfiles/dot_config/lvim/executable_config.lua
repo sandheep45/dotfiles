@@ -35,6 +35,10 @@ lvim.keys.normal_mode["<leader>aw"] = ":wa<CR>"
 --
 lvim.plugins = {
 	{
+		"hashivim/vim-terraform",
+		event = "BufRead",
+	},
+	{
 		"pearofducks/ansible-vim",
 		event = "BufRead",
 	},
