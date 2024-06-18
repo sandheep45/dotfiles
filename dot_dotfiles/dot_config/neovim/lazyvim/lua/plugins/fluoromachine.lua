@@ -1,23 +1,23 @@
 return {
-  "maxmx03/fluoromachine.nvim",
-  config = function()
-    local fm = require("fluoromachine")
-    local themeArray = { "fluoromachine", "retrowave", "delta" }
-    local randomIndex = math.random(1, #themeArray)
-    local randomTheme = themeArray[randomIndex]
+  {
+    "maxmx03/fluoromachine.nvim",
+    priority = 1000,
+    config = function()
+      local fm = require("fluoromachine")
 
-    fm.setup({
-      glow = true,
-      theme = randomTheme,
-      brightness = "0.9",
-      overrides = {
-        ["@keyword"] = { italic = true },
-        ["@conditional"] = { italic = true },
-        ["@include"] = { italic = true },
-        ["@exception"] = { italic = true },
-        ["@define"] = { italic = true },
-        -- ["@SpecialComment"] = { italic = true },
-      },
-    })
-  end,
+      fm.setup({
+        glow = true,
+        theme = "fluoromachine",
+        brightness = 0.01,
+        styles = {
+          keywords = {
+            italic = true,
+          },
+        },
+        transparent = true,
+      })
+
+      vim.cmd.colorscheme("fluoromachine")
+    end,
+  },
 }
