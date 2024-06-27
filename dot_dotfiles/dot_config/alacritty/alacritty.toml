@@ -1,0 +1,26 @@
+[font]
+size = 15
+[font.normal]
+family = "LigaInputMono Nerd Font"
+style = "Regular"
+[font.bold]
+family = "LigaDank Nerd Font"
+style = "Bold"
+[font.italic]
+family = "LigaCartographCF Nerd Font"
+style = "Italic"
+[font.bold_italic]
+family = "LigaDank Nerd Font"
+style = "Bold Italic"
+
+[window]
+opacity = 0.5
+blur = true
+startup_mode = "Maximized"
+option_as_alt = "OnlyLeft"
+
+[cursor]
+style.blinking = "Always"
+
+[keyboard]
+bindings = [{ key = "N", mods = "Control", action = "CreateNewWindow" }]
