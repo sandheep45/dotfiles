@@ -129,3 +129,6 @@ esac
 PATH=~/.console-ninja/.bin:$PATH
 # bun completions
 [ -s "/home/sandheepkumar/.bun/_bun" ] && source "/home/sandheepkumar/.bun/_bun"
+
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
