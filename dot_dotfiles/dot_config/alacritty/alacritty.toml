@@ -1,5 +1,5 @@
 [font]
-size = 15
+size = 16
 [font.normal]
 family = "LigaInputMono Nerd Font"
 style = "Regular"
@@ -7,14 +7,14 @@ style = "Regular"
 family = "LigaDank Nerd Font"
 style = "Bold"
 [font.italic]
-family = "LigaCartographCF Nerd Font"
+family = "LigaOperatorMono Nerd Font"
 style = "Italic"
 [font.bold_italic]
-family = "LigaDank Nerd Font"
-style = "Bold Italic"
+family = "LigaCartographCF Nerd Font"
+style = "Italic"
 
 [window]
-opacity = 0.5
+opacity = 0.9
 blur = true
 startup_mode = "Maximized"
 option_as_alt = "OnlyLeft"
